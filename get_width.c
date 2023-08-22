@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * get_width - get the width
+ * get_wd - get the width
  * @form: format string to print
  * @k: arguments to print them
  * @list: list of arguments
  * Return: the width
  */
-int get_width(const char *form, int *k, va_list list)
+int get_wd(const char *form, int *k, va_list list)
 {
 	int curr = 0;
 	int width = 0;

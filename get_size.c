@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * get_size - get the size
+ * get_sz - get the size
  * @format: print the arguments
  * @k: arguments to print them.
  * Return: size
  */
 
-int get_size(const char *format, int *k)
+int get_sz(const char *format, int *k)
 {
 	int curr = *k;
 	int sz = 0;
