@@ -24,7 +24,7 @@ int get_sz(const char *format, int *k)
 	}
 
 
-	if (size == 0)
+	if (sz == 0)
 	{
 		*k = curr - 1;
 	}
