@@ -4,8 +4,31 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define UNUSED (x)  (void)(x)
+
+#define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
+
+/**
+ * struct fmt - Struct
+ * @fmt: The format
+ * @fn: The function
+ */
+struct fmt
+{
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
+};
+
+/**
+ * typedef struct fmt fmt_t - Struct
+ * @fmt: The format
+ * @fm_t: The function
+ */
+typedef struct fmt fmt_t;
+
+int handle_print(const char *fmt, int *i,
+va_list list, char buffer[], int flags, int width, int precision, int size);
+
 
 /* flag */
 #define F_MINUS 1
@@ -62,15 +85,29 @@ int get_size(const char *format, int *k);
 /*print string in reverse*/
 int print_reverse(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
+/*handles*/
+int handle_write_char(char c, char buffer[],
+	int flags, int width, int precision, int size);
+int write_number(int is_positive, int ind, char buffer[],
+	int flags, int width, int precision, int size);
+int write_num(int ind, char bff[], int flags, int width, int precision,
+	int length, char padd, char extra_c);
+int write_pointer(char buffer[], int ind, int length,
+	int width, int flags, char padd, char extra_c, int padd_start);
+
+int write_unsgnd(int is_negative, int ind,
+char buffer[],
+	int flags, int width, int precision, int size);
 
 /*print a string in rot 13*/
 int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /**** UTILS ****/
-int is_printable(char c);
-int append_hexa_code(char c, char[], int);
-int is_digit(char c);
+int is_printable(char);
+int append_hexa_code(char, char[], int);
+int is_digit(char);
+/*long*/
 
 long convert_size_number(long int num, int size);
 long convert_size_unsgnd(unsigned long int num, int size);
