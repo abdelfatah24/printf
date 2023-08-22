@@ -55,9 +55,9 @@ int print_pointer(va_list types, char buffer[],
 
 /* handle other specifiers */
 int get_flags(const char *format, int *i);
-int get_wd(const char *format, int *k, va_list list);
+int get_width(const char *format, int *k, va_list list);
 int get_precision(const char *format, int *i, va_list list);
-int get_sz(const char *format, int *k);
+int get_size(const char *format, int *k);
 
 /*print string in reverse*/
 int print_reverse(va_list types, char buffer[],
@@ -68,11 +68,11 @@ int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /**** UTILS ****/
-int is_print(char c);
-int append_hexa(char c, char[], int);
-int is_dgt(char c);
+int is_printable(char c);
+int append_hexa_code(char c, char[], int);
+int is_digit(char c);
 
-long convert_size_num(long int num, int size);
-long convert_size_unsigned(unsigned long int num, int size);
+long convert_size_number(long int num, int size);
+long convert_size_unsgnd(unsigned long int num, int size);
 
 #endif
